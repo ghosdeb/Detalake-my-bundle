@@ -1,0 +1,14 @@
+resources:
+  pipelines:
+    sales_pipeline1:
+      name: Sales-pipeline1
+      libraries:
+        - glob:
+            include: ../src/sales_pipeline1/transformations/**
+      catalog: workspace
+      channel: CURRENT
+      continuous: false
+      photon: true
+      root_path: ../src/sales_pipeline1
+      schema: default
+      serverless: true
