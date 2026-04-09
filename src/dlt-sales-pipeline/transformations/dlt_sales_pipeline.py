@@ -87,3 +87,4 @@ def city_wise_sales():
     .groupBy("city")
     .agg(round(sum("total_amount_in_usd"),2).alias("total_sales"))
   )
+                          
