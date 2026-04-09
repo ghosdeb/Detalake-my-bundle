@@ -1,0 +1,11 @@
+resources:
+  pipelines:
+    dlt_sales_pipeline:
+      name: dlt-sales-pipeline
+      libraries:
+        - glob:
+            include: ../src/dlt-sales-pipeline/transformations/**
+      serverless: true
+      catalog: deltalake_catalog
+      schema: ${workspace.current_user.short_name}
+      root_path: ../src/dlt-sales-pipeline
