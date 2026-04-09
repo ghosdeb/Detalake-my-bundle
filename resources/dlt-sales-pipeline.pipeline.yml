@@ -1,11 +1,20 @@
 resources:
   pipelines:
-    dlt_sales_pipeline:
+    pipeline_dlt_sales_pipeline:
       name: dlt-sales-pipeline
+      configuration:
+        source: /Volumes/deltalake_catalog/ingestion/raw_vol/input
+        checkpointlocation: /Volumes/deltalake_catalog/ingestion/raw_vol/orders_checkpoint/
       libraries:
         - glob:
             include: ../src/dlt-sales-pipeline/transformations/**
+        - glob:
+            include: ../src/dlt-sales-pipeline/utilities/utils.py
+      schema: default
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: workspace
       serverless: true
-      catalog: deltalake_catalog
-      schema: ${workspace.current_user.short_name}
-      root_path: ../src/dlt-sales-pipeline
+      root_path: /Workspace/Users/debs.nc24@gmail.com/dlt-sales-pipeline
